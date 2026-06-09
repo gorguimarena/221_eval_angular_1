@@ -1,0 +1,32 @@
+<section class="journal-section">
+  <h2>Journal du jour</h2>
+
+  @if (store.sortedActivities().length === 0) {
+    <p class="empty-state">Aucune activité enregistrée pour le moment.</p>
+  } @else {
+    <ul class="activity-list">
+      @for (activity of store.sortedActivities(); track activity.id) {
+        <li
+          class="activity-item"
+          [class.activity-sport]="activity.type === 'SPORT'"
+          [class.activity-hydration]="activity.type === 'HYDRATATION'"
+        >
+          <div class="activity-header">
+            <span class="activity-type">{{ activity.type }}</span>
+            <time class="activity-time">
+              {{ activity.createdAt | date: 'HH:mm' }}
+            </time>
+          </div>
+          <p class="activity-name">{{ activity.name }}</p>
+          <p class="activity-value">
+            @if (activity.type === 'SPORT') {
+              {{ activity.value }} kcal
+            } @else {
+              {{ activity.value }} ml
+            }
+          </p>
+        </li>
+      }
+    </ul>
+  }
+</section>

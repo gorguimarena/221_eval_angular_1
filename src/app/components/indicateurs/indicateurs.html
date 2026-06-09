@@ -1,0 +1,15 @@
+<section class="metrics">
+  <div class="metric-card">
+    <span class="metric-label">Calories brûlées</span>
+    <span class="metric-value">{{ store.totalCalories() }} kcal</span>
+  </div>
+  <div class="metric-card">
+    <span class="metric-label">Eau consommée</span>
+    <span class="metric-value">{{ store.totalWater() }} ml</span>
+  </div>
+  <div class="metric-card">
+    <span class="metric-label">Bilan calorique restant</span>
+    <span class="metric-value">{{ store.remainingCalories() }} kcal</span>
+    <span class="metric-hint">Objectif : {{ store.dailyCalorieGoal }} kcal</span>
+  </div>
+</section>

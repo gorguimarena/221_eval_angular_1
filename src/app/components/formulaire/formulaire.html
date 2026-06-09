@@ -1,0 +1,32 @@
+<section class="form-section">
+  <h2>Nouvelle activité</h2>
+  <form [formGroup]="activityForm" (ngSubmit)="submit()" class="activity-form">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input id="name" type="text" formControlName="name" placeholder="Ex : Course matinale" />
+      @if (activityForm.controls.name.touched && activityForm.controls.name.invalid) {
+        <span class="error">Le nom est obligatoire.</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="type">Type</label>
+      <select id="type" formControlName="type">
+        <option value="SPORT">SPORT</option>
+        <option value="HYDRATATION">HYDRATATION</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="value">
+        {{ getValueLabel(activityForm.controls.type.value) }}
+      </label>
+      <input id="value" type="number" formControlName="value" min="1" />
+      @if (activityForm.controls.value.touched && activityForm.controls.value.invalid) {
+        <span class="error">La valeur doit être supérieure à 0.</span>
+      }
+    </div>
+
+    <button type="submit" class="btn-submit">Ajouter l'activité</button>
+  </form>
+</section>

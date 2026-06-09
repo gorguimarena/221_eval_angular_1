@@ -1,0 +1,15 @@
+<section class="alerts">
+  @if (store.showDehydrationWarning()) {
+    <div class="alert alert-critical" role="alert">
+      <strong>Avertissement critique — Déshydratation</strong>
+      <p>
+        Votre consommation d'eau ({{ store.totalWater() }} ml) est strictement
+        inférieure à 1500 ml. Hydratez-vous davantage.
+      </p>
+    </div>
+  } @else if (store.showHealthSuccess()) {
+    <div class="alert alert-success" role="status">
+      <strong>Objectif Santé Atteint</strong>
+    </div>
+  }
+</section>
